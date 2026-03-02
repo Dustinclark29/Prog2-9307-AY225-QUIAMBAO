@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Monthly Performance Analyzer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #6b6b6b, #000000);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        input[type="file"] {
+            padding: 6px;
+        }
+
+        button {
+            padding: 8px 18px;
+            border: none;
+            border-radius: 8px;
+            background: #000000;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #000000;
+        }
+
+        #output {
+            background: #f8f9fc;
+            padding: 15px;
+            border-radius: 10px;
+            max-height: 400px;
+            overflow-y: auto;
+            font-size: 14px;
+            white-space: pre-wrap;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 13px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>📊 Monthly Performance Analyzer</h2>
+
+        <div class="controls">
+            <input type="file" id="fileInput" accept=".csv">
+            <button onclick="uploadFile()">Analyze</button>
+        </div>
+
+        <div id="output">Results will appear here...</div>
+
+       
+    </div>
+
+    <script>
+        function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                alert("Please select a CSV file.");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("dataset", file);
+
+            fetch("/analyze", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("output").textContent = data;
+            })
+            .catch(error => {
+                document.getElementById("output").textContent = "Error processing file.";
+            });
+        }
+    </script>
+
+</body>
+</html>
