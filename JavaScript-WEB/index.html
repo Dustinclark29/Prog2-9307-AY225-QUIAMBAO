@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Record System</title>
+    <style>
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+            color: #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-weight: 600;
+            font-size: 28px;
+        }
+
+        /* Input fields & button container */
+        .input-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        input {
+            padding: 10px;
+            border: 2px solid #000;
+            border-radius: 5px;
+            width: 120px;
+            font-size: 14px;
+            background: #fff;
+            color: #000;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: 2px solid #000;
+            border-radius: 5px;
+            background: #000;
+            color: #fff;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Table styles */
+        table {
+            width: 100%;
+            max-width: 900px;
+            border-collapse: collapse;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        th, td {
+            border: 1px solid #000;
+            padding: 12px;
+        }
+
+        th {
+            background-color: #000;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        td button {
+            padding: 5px 10px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            background: #fff;
+            color: #000;
+            font-weight: 500;
+        }
+
+        td button:hover {
+            background: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Student Record System</h2>
+
+<!-- Input Fields -->
+<div class="input-container">
+    <input id="id" placeholder="ID">
+    <input id="name" placeholder="Name">
+    <input id="lab1" placeholder="Lab 1">
+    <input id="lab2" placeholder="Lab 2">
+    <input id="lab3" placeholder="Lab 3">
+    <input id="prelim" placeholder="Prelim Exam">
+    <input id="attendance" placeholder="Attendance">
+    <button onclick="addStudent()">Add Student</button>
+</div>
+
+<!-- Table -->
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Lab 1</th>
+            <th>Lab 2</th>
+            <th>Lab 3</th>
+            <th>Prelim Exam</th>
+            <th>Attendance</th>
+            
+        </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+</table>
+
+<script src="script.js"></script>
+</body>
+<footer style="margin-top:20px; font-weight:bold; text-align:center;">
+    Records - Dustin Clark Quiambao [23-0257-806]
+</footer>
+</html>
